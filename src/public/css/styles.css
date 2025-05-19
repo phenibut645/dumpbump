@@ -1,0 +1,107 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #26263C;
+    
+}
+.navigation-container{
+    width: 100%;
+    height: 92px;
+    background-color: #4D3C96;
+    display: flex;
+    justify-content: space-between;
+
+    
+}
+.fast-notes-navigation-container{
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+.navigation-buttons-container {
+    display: flex;
+    
+    gap: 25px;
+    padding-left: 65px;
+}
+.fast-notes-navigation-container img {
+    height: 50%;
+    transition: transform 0.3s ease;
+}
+.rotated {
+    transform: rotate(90deg);
+}
+.navigation-button {
+    color: #fff;
+    display: flex;
+    font-size: 31px;
+    width: 100%;
+    background-color: rgba(64, 50, 88, 0.1);
+    align-items: center;
+    justify-content: center;
+    padding: 0px 137px 0 137px;
+    border-right: 9px solid rgba(47, 41, 59, 0.2);
+    border-left: 9px solid rgba(47, 41, 59, 0.2);
+    cursor: pointer;
+}
+.navigation-button:hover .navigation-button-inner .navigation-button-line{
+    height: 5px;
+    opacity: 1;
+}
+.navigation-buttons-wrapper{
+    display: flex;
+    gap: 15px;
+}
+.navigation-button-inner{
+    gap:2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.navigation-button-line {
+    height: 0;
+    opacity: 0;
+    background-color: rgba(47, 41, 59, 0.7);
+    transition: height 0.3s ease, opacity 0.3s ease;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+
+.navigation-profile-button img {
+    height: 100%;
+    transition: border-radius 0.3s ease;
+    transition: height 0.3s ease;
+}
+
+.navigation-profile-button:hover img{
+    border-radius: 12px;
+    height: 90%;
+}
+
+.navigation-profile-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#sidebar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    
+    height: 100%;
+    width: 355px;
+    background-color: #413868;
+    transform: translateX(-100%);
+    transition: transform 0.7s ease;
+    
+    z-index: 1000;
+}
+#sidebar.open{
+    transform: translateX(0);
+}
