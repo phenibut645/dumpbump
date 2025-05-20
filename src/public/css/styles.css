@@ -2,18 +2,20 @@ body {
     margin: 0;
     padding: 0;
     background-color: #26263C;
-    
+    font-family: "Aoboshi One", serif;
+    font-weight: 400;
+    font-style: normal;
 }
-.navigation-container{
+
+.navigation-container {
     width: 100%;
     height: 92px;
     background-color: #4D3C96;
     display: flex;
     justify-content: space-between;
-
-    
 }
-.fast-notes-navigation-container{
+
+.fast-notes-navigation-container {
     height: 100%;
     cursor: pointer;
     display: flex;
@@ -21,19 +23,22 @@ body {
     align-items: center;
     padding-left: 20px;
 }
+
 .navigation-buttons-container {
     display: flex;
-    
     gap: 25px;
     padding-left: 65px;
 }
+
 .fast-notes-navigation-container img {
     height: 50%;
     transition: transform 0.3s ease;
 }
+
 .rotated {
     transform: rotate(90deg);
 }
+
 .navigation-button {
     color: #fff;
     display: flex;
@@ -47,16 +52,19 @@ body {
     border-left: 9px solid rgba(47, 41, 59, 0.2);
     cursor: pointer;
 }
-.navigation-button:hover .navigation-button-inner .navigation-button-line{
+
+.navigation-button:hover .navigation-button-inner .navigation-button-line {
     height: 5px;
     opacity: 1;
 }
-.navigation-buttons-wrapper{
+
+.navigation-buttons-wrapper {
     display: flex;
     gap: 15px;
 }
-.navigation-button-inner{
-    gap:2px;
+
+.navigation-button-inner {
+    gap: 2px;
     display: flex;
     flex-direction: column;
 }
@@ -70,38 +78,170 @@ body {
     overflow: hidden;
 }
 
-
 .navigation-profile-button img {
     height: 100%;
     transition: border-radius 0.3s ease;
     transition: height 0.3s ease;
+    cursor: pointer;
 }
 
-.navigation-profile-button:hover img{
+.navigation-profile-button img:hover {
     border-radius: 12px;
     height: 90%;
 }
 
 .navigation-profile-button {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
+    justify-content: end;
+    align-items: end;
 }
 
-#sidebar{
+#sidebar {
     position: absolute;
     bottom: 0;
     left: 0;
-    
     height: 100%;
     width: 355px;
     background-color: #413868;
     transform: translateX(-100%);
-    transition: transform 0.7s ease;
-    
+    transition: transform 0.3s ease;
     z-index: 1000;
 }
-#sidebar.open{
+
+#sidebar.open {
     transform: translateX(0);
+}
+
+.group-item-wrapper {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 5px solid rgba(47, 41, 59, 0.2);
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.group-item {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    transition: flex 1.3s ease;
+}
+
+.group-item-line {
+    border-radius: 20px;
+    width: 100%;
+    height: 5px;
+    background-color: rgba(47, 41, 59, 0.7);
+    transition: width 0.3s ease;
+}
+
+.group-item-line.open {
+    width: 200px;
+}
+
+.group-item-text {
+    color: #fff;
+    font-size: 25px;
+    font-family: "Anuphan", sans-serif;
+}
+
+.group-color-box {
+    background-color: aqua;
+    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+}
+
+.group-item-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: max-content;
+    gap: 15px;
+}
+
+.group-container-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+}
+
+.group-item-wrapper-hover:hover .group-item .group-item-text-wrapper .group-item-line {
+    width: 200px;
+}
+
+.note-color-box {
+    background-color: aqua;
+    border-radius: 5px;
+    width: 15px;
+    height: 15px;
+}
+
+.note-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+}
+
+.note-item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-item-line {
+    border-radius: 20px;
+    width: 50%;
+    height: 4px;
+    background-color: rgba(47, 41, 59, 0.4);
+    transition: width 0.3s ease;
+}
+
+.notes-container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.hidden {
+    display: none;
+}
+
+.add-svg-button {
+    width: 40px;
+    cursor: pointer;
+}
+
+.notes-add-button {
+    width: 30px;
+    cursor: pointer;
+}
+
+.add-button-container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.notes-add-button-container {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
