@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
 import groups from '../../utils/data.js';
 
+
 const router = Router();
 
 
@@ -20,7 +21,35 @@ router.get("/groups", (req: Request, res: Response) => {
     })
 })
 router.post("/groups/add", (req: Request, res:Response) => {
-    res.send({"response":1})
+    console.log(req.body);
+    if(req.body.rgb && req.body.name){
+        groups.push({
+            "name": req.body.name as string,
+            "color": req.body.rgb.split(", ").map(el => Number(el)) as number[],
+            "notes": []
+        })
+    }
+    res.send({"response": {"success": 1}});
+})
+router.post("/notes/add", (req: Request, res:Response) => {
+    console.log(req.body);
+    if(req.body.rgb && req.body.name && req.body.groupName){
+        console.log(req.body.groupName);
+        const groupIndex = groups.findIndex(el => {
+            console.log(el)
+            return el.name === req.body.groupName
+        });
+        if(groupIndex === -1){
+            res.send({"response": {"success": 0}});
+            return;
+        } 
+        groups[groupIndex].notes.push({
+            "name": req.body.name,
+            "color": req.body.rgb,
+            "text": ""
+        })
+    }
+    res.send({"response": {"success": 1}});
 })
 
 export default router;
