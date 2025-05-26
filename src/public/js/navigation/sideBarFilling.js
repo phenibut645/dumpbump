@@ -9,6 +9,14 @@ async function getGroups() {
     return json;
 }
 
+async function fillNote(groupIndex, noteIndex){
+    const url = location.protocol + "//" + location.host + "/api/note-text/" + `${groupIndex}-${noteIndex}`;
+    const response = await fetch(url);
+    const json = await response.json();
+    window.eventHandler.callEvent("renderText", json["text"]);
+    return json;
+}
+
 let newGroupInput = false;
 let mainAddButton = null;
 const alrObject = []
@@ -53,7 +61,7 @@ function renderRefreshButton(el){
 }
 
 
-function renderComponent(obj) {
+function renderComponent(obj, grpIndex) {
 
 
     const groupItemWrapper = document.createElement("div");
@@ -91,9 +99,10 @@ function renderComponent(obj) {
     notesContainer.classList.add("notes-container");
     notesContainer.classList.add("hidden");
     groupItemWrapper.appendChild(notesContainer);
-
+    let index = -1;
     obj.notes.forEach(note => {
-
+        index++;
+        let ntIndex = index;
         const noteItemWrapper = document.createElement("div");
         noteItemWrapper.classList.add("note-item-container");
         notesContainer.appendChild(noteItemWrapper);
@@ -111,6 +120,10 @@ function renderComponent(obj) {
         noteItemText.innerText = note.name;
         noteItemText.classList.add("note-item-text");
         noteItem.appendChild(noteItemText);
+
+        noteItemText.addEventListener("click", _ => {
+            fillNote(grpIndex, ntIndex);
+        });
 
         const noteItemLine = document.createElement("div");
         noteItemLine.classList.add("note-item-line");
@@ -302,8 +315,10 @@ async function renderFilling() {
     const groups = await getGroups()
     if (groups["response"]["success"] === 1) {
         renderRefreshButton(groupsContainer)
+        let index = -1;
         groups["response"]["data"].forEach(group => {
-            renderComponent(group)
+            index++;
+            renderComponent(group, index)
         })
         renderAddButton(groupsContainer)
     } else {

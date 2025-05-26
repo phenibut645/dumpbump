@@ -52,4 +52,16 @@ router.post("/notes/add", (req: Request, res:Response) => {
     res.send({"response": {"success": 1}});
 })
 
+router.get("/note-text/:grpNt", (req: Request, res: Response) => {
+    if(req.params.grpNt){
+        const [groupIndex, noteIndex] = req.params.grpNt.split("-").map(el => Number(el));
+        console.log("Group Index", groupIndex, "Note index", noteIndex);
+        res.json({text:groups[groupIndex]["notes"][noteIndex]["text"]});
+    }
+    res.status(400).json({response: {
+        success: 0,
+        error: "xz"
+    }})
+});
+
 export default router;

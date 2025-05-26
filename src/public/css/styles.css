@@ -277,3 +277,12 @@ body {
     height:25px;
 
 }
+.body-wrapper{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.body-container{
+    width: 60%;
+    color: #fff;
+}
